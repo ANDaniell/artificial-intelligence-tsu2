@@ -1,0 +1,17 @@
+{
+  "Wealthy": [
+    [["Median", ">", "1.8 * Median"], ["ALand", ">", "1.2 * ALand"]],
+    [["Mean", ">", "2.0 * Mean"]]
+  ],
+  "Middle class": [
+    [["Median", ">=", "Median"], ["Median", "<=", "1.8 * Median"]],
+    [["ALand", ">=", "0.7 * ALand"], ["ALand", "<=", "1.2 * ALand"]]
+  ],
+  "Poor": [
+    [["Median", "<", "Median"], ["Median", ">=", "0.6 * Median"]]
+  ],
+  "Below poverty line": [
+    [["Median", "<", "0.6 * Median"]],
+    [["ALand", "<", "0.4 * ALand"]]
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "Обеспеченная": [
+    [["Median", ">", "2 * Median"], ["ALand", ">", "1.5 * ALand"]],
+    [["Mean", ">", "2.5 * Mean"]],
+    [["Households", ">", "1.2 * Households"], ["Stdev", "<", "0.5 * Stdev"]]
+  ],
+  "Средний класс": [
+    [["Median", ">=", "Median"], ["Median", "<=", "2 * Median"]],
+    [["ALand", ">=", "0.8 * ALand"], ["ALand", "<=", "1.5 * ALand"]],
+    [["Households", ">=", "0.9 * Households"], ["Stdev", "<=", "Stdev"]]
+  ],
+  "Бедная": [
+    [["Median", "<", "Median"], ["Median", ">=", "0.5 * Median"]],
+    [["Households", "<", "0.9 * Households"]]
+  ],
+  "За гранью бедности": [
+    [["Median", "<", "0.5 * Median"]],
+    [["ALand", "<", "0.3 * ALand"]],
+    [["Stdev", ">", "2 * Stdev"]]
+  ]
+}

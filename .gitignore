@@ -3,4 +3,15 @@
 tests.py
 vacation_expert_final.py
 test_phi4.py
+tests2.py
+rules.json
 
+# IDE
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+
+# IntelliJ / PyCharm
+*.iml

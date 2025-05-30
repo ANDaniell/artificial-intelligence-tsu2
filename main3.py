@@ -93,30 +93,34 @@ def classify_family_with_llm(city: str, median: str, mean: str, aland: str, stde
     classification_rules_text = format_classification_rules_for_prompt(classification_rules, city_thresholds)
 
     system_prompt = f"""
-You are an expert system that classifies families into income categories based on their parameters and city thresholds.
-City data: {city_thresholds_text}
-Classification rules (conditions may contain expressions referencing city thresholds, e.g. "1.8 * Median" means 1.8 times the city's Median income):
-{classification_rules_text}
-Given a city and a family's parameters (Median, Mean, ALand, Stdev), classify the family into one of these categories:
-Wealthy, Middle class, Poor, Below poverty line.
-Respond in exactly the following format (without quotes):
-You MUST start your reply with the line:
-Category: <category name>
+    You are an expert system that classifies families into income categories.
+    
+    - "City Median" means the city's median income.
+    - "Family Median" means the family's income.
 
-Then write:
-Explanation: <your reasoning>
-"""
+    City thresholds:
+    {city_thresholds_text}
+    
+    When comparing thresholds, always interpret expressions like "1.8 * Median" as referring to **city thresholds**. 
+Family data will always use the prefix "Family", e.g., "Family Median".
+
+    Classification rules (expressed using city thresholds like '0.6 * City Median'):
+
+    {classification_rules_text}
+
+    Given family data (Family Median, Family Mean, etc.), determine the appropriate category.
+    ...
+    """
 
     template = PromptTemplate(
         input_variables=["city", "Median", "Mean", "ALand", "Stdev"],
         template=system_prompt + """
-
 Family data:
 - City: {city}
-- Median: {Median}
-- Mean: {Mean}
-- ALand: {ALand}
-- Stdev: {Stdev}
+- Family Median: {Median}
+- Family Mean: {Mean}
+- Family ALand: {ALand}
+- Family Stdev: {Stdev}
 """
     )
 
